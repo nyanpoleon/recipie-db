@@ -73,16 +73,18 @@ app.put("/recipies/:id", (req, res) => {
     });
 });
 
-app.delete("/recipie/:id", (req, res) => {
-    let {id} = req.params;
-    Recipie.findByIdAndDelete(id).then((recipie) => {
-        console.log(recipie)
-        res.json({ message: "recipie deleted successfully" });
-      })
-      .catch((err) => {
-        res.json({ error: "something went wrong" });
-      });
-})
+app.delete("/recipies/:id", (req, res) => {
+  let { id } = req.params;
+  Recipie.findByIdAndDelete(id)
+    .then((recipe) => {
+      console.log(recipe);
+      res.json({ message: "recipe deleted successfully" });
+    })
+    .catch((err) => {
+      res.json({ error: "something went wrong" });
+    });
+});
+
 
 app.listen(process.env.PORT, () => {
   console.log("listening on port 4000");
